@@ -1,0 +1,5 @@
+djangorestframework
+django-filter
+channels
+channels-redis
+Django
