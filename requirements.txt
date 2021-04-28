@@ -1,6 +1,11 @@
-djangorestframework
-django-filter
 channels
 channels-redis
 Django
 django-crispy-forms
+djangorestframework
+
+# channels==3.0.3
+# channels-redis==3.2.0
+# Django==3.2
+# django-crispy-forms==1.11.2
+# djangorestframework==3.12.4
