@@ -59,8 +59,11 @@ source env/bin/activate
 pip install -r requirements.txt
 ```
 
-3. Start Redis Server
+3. Install and Start Redis Server
 ```bash
+sudo add-apt-repository ppa:redislabs/redis
+sudo apt-get update
+sudo apt-get install redis
 redis-server
 ```
 
@@ -68,9 +71,4 @@ redis-server
 ```bash
 ./manage.py migrate
 ./manage.py runserver
-```
-
-Message prefetch config (load last n messages):
-```python
-MESSAGES_TO_LOAD = 15
 ```
