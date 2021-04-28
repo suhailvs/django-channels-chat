@@ -5,7 +5,7 @@
 
   
   <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}"/>
-  <link rel="stylesheet" href="{% static 'whatsapp/style.css' %}"/>
+  <link rel="stylesheet" href="{% static 'core/chat_whatsapp.css' %}"/>
 {% endblock %}
 
 {% block main %}
@@ -15,7 +15,7 @@
 
       <!-- Navbar -->
       <div class="row d-flex flex-row align-items-center p-2" id="navbar">
-        <img alt="Profile Photo" class="img-fluid rounded-circle mr-2" style="height:50px; cursor:pointer;" onclick="showProfileSettings()" id="display-pic">
+        <img src="https://via.placeholder.com/400x400" alt="Profile Photo" class="img-fluid rounded-circle mr-2" style="height:50px; cursor:pointer;" onclick="showProfileSettings()" id="display-pic">
         <div class="text-body font-weight-bold" id="username"></div>
         <div class="nav-item dropdown ml-auto">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v text-body"></i></a>
@@ -90,10 +90,19 @@
 
 
 {% block extrajs %}
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     let static_url = "{% static 'whatsapp/' %}";
   </script>
 <script src="{% static 'whatsapp/datastore.js' %}"></script>
 <script src="{% static 'whatsapp/date-utils.js' %}"></script>
-<script src="{% static 'whatsapp/script.js' %}"></script>
+<script src="{% static 'whatsapp/script.js' %}"></script> -->
+
+
+
+<script>
+    let sessionKey = '{{ request.session.session_key }}';
+    let currentUser = '{{ request.user.username }}';
+    let static_url = "{% static 'core' %}";
+</script>
+<script src="{% static 'core/chat_whatsapp.js' %}"></script>
 {% endblock %}
