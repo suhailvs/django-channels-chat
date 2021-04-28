@@ -1,0 +1,20 @@
+{% extends 'registration/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block col_class %}col-md-6 col-sm-12 offset-md-3{% endblock col_class %}
+{% block cardheader %}Sign up{% endblock cardheader %}
+
+{% block form %}
+<form method="post" novalidate>
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ next }}">
+  {{ form|crispy }}
+  <button type="submit" class="btn btn-success btn-block">Create an account</button>
+  <div class="login-or">
+     <hr class="hr-or">
+     <span class="span-or">or</span>
+  </div>
+  <p class="text-center"><a href="{% url 'login' %}">Already have an account?</a></p>
+</form>
+{% endblock form %}
