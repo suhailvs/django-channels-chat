@@ -66,7 +66,13 @@
 }
 
 #message-area .overlay {
-	background: hsl(0, 0%, 80%);
+	/*background: hsl(0, 0%, 80%);    */
+    background: #f8f9fa;    
+}
+
+#message-area .intro {
+	background: url("/static/whatsapp/images/intro_back.jpg") no-repeat center;
+	height: 100%;	
 }
 
 #input-area {
@@ -104,8 +110,11 @@
 
 #messages {
 	flex: 1!important;
-	/*background: hsl(0, 0%, 80%);*/
+	/*
+	background: hsl(0, 0%, 80%);
 	background: #efe7dd url("https://cloud.githubusercontent.com/assets/398893/15136779/4e765036-1639-11e6-9201-67e728e86f39.jpg") repeat;
+	*/
+	background: #efe7dd url("/static/whatsapp/images/back.jpg") repeat;
 	overflow: auto;
 }
 

@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block extracss %}
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous"> -->
+
+  
+  <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}"/>
   <link rel="stylesheet" href="{% static 'whatsapp/style.css' %}"/>
 {% endblock %}
 
@@ -52,7 +55,7 @@
 
     <!-- Message Area -->
     <div class="d-none d-sm-flex flex-column col-12 col-sm-7 col-md-8 p-0 h-100" id="message-area">
-      <div class="w-100 h-100 overlay"></div>
+      <div class="w-100 h-100 overlay"><div class="intro"></div></div>
 
       <!-- Navbar -->
       <div class="row d-flex flex-row align-items-center p-2 m-0 w-100" id="navbar">
