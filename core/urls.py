@@ -10,8 +10,8 @@ router.register(r'user', UserModelViewSet, basename='user-api')
 
 urlpatterns = [
     path('api/v1/', include(router.urls)),
-    path('whatsapp/', login_required(
-        TemplateView.as_view(template_name='core/whatsapp.html')), name='whatsapp'),
     path('', login_required(
-        TemplateView.as_view(template_name='core/chat.html')), name='home'),
+        TemplateView.as_view(template_name='core/whatsapp.html')), name='whatsapp'),
+    path('simpleui/', login_required(
+        TemplateView.as_view(template_name='core/chat.html')), name='simpleui'),
 ]

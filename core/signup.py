@@ -2,8 +2,10 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 from django.views.generic import CreateView
 from django.urls import reverse
+from django.shortcuts import redirect
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -32,5 +34,13 @@ class SignUpView(CreateView):
     form_class = SignUpForm
     template_name = 'registration/signup.html'
 
-    def get_success_url(self):
-        return reverse('home')
+    # def get_success_url(self):
+    #     return reverse('home')
+
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        # feed = Feed.objects.create(user=user, post=welcome_post)
+
+        return redirect('whatsapp')

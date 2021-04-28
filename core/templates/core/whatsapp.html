@@ -20,7 +20,8 @@
         <div class="nav-item dropdown ml-auto">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v text-body"></i></a>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="#">Log Out</a>
+            <a class="dropdown-item" href="{% url 'simpleui' %}">Simple UI</a>
+            <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
           </div>
         </div>
       </div>
@@ -98,7 +99,7 @@
 <script src="{% static 'whatsapp/script.js' %}"></script> -->
 
 
-
+<script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
 <script>
     let sessionKey = '{{ request.session.session_key }}';
     let currentUser = '{{ request.user.username }}';

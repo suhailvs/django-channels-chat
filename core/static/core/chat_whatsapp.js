@@ -118,8 +118,8 @@ function getConversation(elem,recipient) {
 }
 
 function getMessageById(message) {
-    id = JSON.parse(message).message
-    $.getJSON(`/api/v1/message/${id}/`, function (data) {
+    const msg_id = JSON.parse(message).message;
+    $.getJSON(`/api/v1/message/${msg_id}/`, function (data) {
         if (data.user === currentRecipient ||
             (data.recipient === currentRecipient && data.user == currentUser)) {
             drawMessage(data);
@@ -129,13 +129,17 @@ function getMessageById(message) {
 }
 
 
-function sendMessage(recipient, body) {
-    $.post('/api/v1/message/', {
-        recipient: recipient,
-        body: body
-    }).fail(function () {
-        alert('Error! Check console!');
-    });
+function sendMessage() {
+    const body = chatInput.val();
+    if (body.length > 0) {
+        $.post('/api/v1/message/', {
+            recipient: currentRecipient,
+            body: body
+        }).fail(function () {
+            alert('Error! Check console!');
+        });
+        chatInput.val('');
+    }
 }
 
 $(document).ready(function () {
@@ -144,12 +148,7 @@ $(document).ready(function () {
     var socket = new WebSocket('ws://' + window.location.host + `/ws?session_key=${sessionKey}`)
 
     chatInput.keypress(function (e) {
-        if (e.keyCode == 13) {
-            if (chatInput.val().length > 0) {
-                sendMessage(currentRecipient, chatInput.val());
-                chatInput.val('');
-            }
-        }
+        if (e.keyCode == 13) sendMessage();
     });
 
     socket.onmessage = function (e) {
