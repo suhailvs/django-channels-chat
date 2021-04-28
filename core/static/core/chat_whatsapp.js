@@ -32,49 +32,28 @@ function updateUserList() {
 }
 
 
+let getTime = (dateString) => {
+  let date = dateString ? new Date(dateString) : new Date();
+  let dualize = (x) => x < 10 ? "0" + x : x;
+  return dualize(date.getHours()) + ":" + dualize(date.getMinutes());
+}
 
-const mDate = (dateString) => {
-    
-    let date = dateString ? new Date(dateString) : new Date();
+function showDatesWeekDays(dateString) {
+    const dt = new Date(dateString)        
+    let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']; 
 
-    let dualize = (x) => x < 10 ? "0" + x : x;
-    let getTime = () => dualize(date.getHours()) + ":" + dualize(date.getMinutes());
-    let getDate = () => dualize(date.getDate()) + "/" + dualize(date.getMonth()) + "/" + dualize(date.getFullYear());
-
-    return {
-        subtract: (otherDateString) => {
-            return date - new Date(otherDateString);
-        },
-        lastSeenFormat: () => {
-            let dateDiff = Math.round(new Date() - date) / (1000 * 60 * 60 * 24);
-            let value = (dateDiff === 0) ? "today" : (dateDiff === 1) ? "yesterday" : getDate();
-            return value + " at " + getTime();
-        },
-        chatListFormat: () => {
-            let dateDiff = Math.round((new Date() - date) / (1000 * 60 * 60 * 24));
-            if (dateDiff === 0) {
-                return getTime();
-            } else if (dateDiff === 1) {
-                return "Yesterday";
-            } else {
-                return getDate();
-            }
-        },
-        getDate: () => {
-            return getDate();
-        },
-        getTime: () => {
-            return getTime();
-        },
-        toString:() => {
-            return date.toString().substr(4, 20);
-        },
-    };
-};
-
+    let date_weekday = dt.toLocaleDateString();
+    if (dt.toDateString() == new Date().toDateString()) {
+        date_weekday = 'TODAY';
+    } else if(dt > new Date(Date.now() - 604800000)) {
+        // if date is greater than last 7 days date
+        date_weekday = days[dt.getDay()].toUpperCase()
+    }
+    return date_weekday;
+}
 
 function drawMessage(message) {
-    let msgDate = mDate(message.timestamp).getDate();
+    let msgDate = showDatesWeekDays(message.timestamp);
     let messageItem = '';
     if (lastDate != msgDate) {
         messageItem += `<div class="mx-auto my-2 bg-info text-white small py-1 px-2 rounded">
@@ -83,7 +62,7 @@ function drawMessage(message) {
         lastDate = msgDate;
     }
     // alert(message.user === currentUser);
-    const date = new Date(message.timestamp);
+    // const date = new Date(message.timestamp);
     messageItem += `
     <div class="align-self-${message.user === currentUser ? "end self" : "start"} p-1 my-1 mx-3 rounded bg-white shadow-sm message-item">
         <div class="options">
@@ -92,7 +71,7 @@ function drawMessage(message) {
         <div class="d-flex flex-row">
             <div class="body m-1 mr-2">${message.body}</div>
             <div class="time ml-auto small text-right flex-shrink-0 align-self-end text-muted" style="width:75px;">
-                ${mDate(message.timestamp).getTime()}
+                ${getTime(message.timestamp)}
             </div>
         </div>
     </div>`;
