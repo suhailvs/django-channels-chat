@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'chat.css' %}"/>
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <h1>Welcome to ChatApp <small>Pick a user and start chatting!</small></h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div id="user-list" class="list-group">
+                    <a href="{% url 'logout' %}" class="list-group-item list-group-item-action">
+                        <h4 class="list-group-item-heading">{{ user.username }} - logout</h4>
+                        {# Users go here #}
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-8">
+
+                <div class="card">
+                  <div class="card-header">Chat</div>
+                  <div class="card-body">
+                    <ul id="messages" class="messages">
+                        {# Messages go here #}
+                    </ul>
+                  </div>
+                  <div class="card-footer">
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control input" id="chat-input" placeholder="Type your message here ..." maxlength="500">
+                      <button class="btn btn-outline-secondary" id="btn-send">Send</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block extrajs %}
+<script>
+    let sessionKey = '{{ request.session.session_key }}';
+    let currentUser = '{{ request.user.username }}';
+</script>
+<script src="{% static 'chat.js' %}"></script>
+{% endblock %}

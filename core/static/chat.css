@@ -6,7 +6,7 @@
     position: relative;
     padding: 10px 10px 0 10px;
     margin: 0 0 0 0;
-    height: 500px;
+    height: 400px;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -100,6 +100,10 @@
     font-weight: 300;
 }
 
-body {
-    font-size: 15px;
+
+/* https://stackoverflow.com/a/47256615/2351696 */
+.list-group{
+    max-height: 570px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
