@@ -39,7 +39,6 @@ https://channels.readthedocs.io/en/latest/introduction.html
 ## Assumptions ##
 Because of time constraints this project lacks of:
 
-- User Sign-In / Forgot Password
 - User Selector Pagination
 - Good Test Coverage
 - Better Comments / Documentation Strings
@@ -50,12 +49,10 @@ Because of time constraints this project lacks of:
 
 ## Run ##
 
-0. move to project root folder
-
-
 1. Create and activate a virtualenv (Python 3)
 ```bash
 python3 -m venv env
+source env/bin/activate
 ```
 2. Install requirements
 ```bash
@@ -67,26 +64,11 @@ pip install -r requirements.txt
 redis-server
 ```
 
-4. Init database
+4. Init database and runserver
 ```bash
 ./manage.py migrate
-```
-5. Run tests
-```bash
-./manage.py test
-```
-
-6. Create admin user
-```bash
-./manage.py createsuperuser
-```
-
-7. Run development server
-```bash
 ./manage.py runserver
 ```
-
-To override default settings, create a local_settings.py file in the chat folder.
 
 Message prefetch config (load last n messages):
 ```python
