@@ -3,3 +3,4 @@ django-filter
 channels
 channels-redis
 Django
+django-crispy-forms

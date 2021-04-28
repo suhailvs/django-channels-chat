@@ -8,7 +8,7 @@ function updateUserList() {
     $.getJSON('api/v1/user/', function (data) {
         userList.children('.user').remove();
         for (let i = 0; i < data.length; i++) {
-            const userItem = `<a class="list-group-item user">${data[i]['username']}</a>`;
+            const userItem = `<a href="#" class="list-group-item list-group-item-action user">${data[i]['username']}</a>`;
             $(userItem).appendTo('#user-list');
         }
         $('.user').click(function () {

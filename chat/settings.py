@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'core',
 
     # 3rd party
+    'crispy_forms',
     'rest_framework',
     'channels',
 ]
@@ -143,7 +144,7 @@ USE_L10N = True
 
 USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 

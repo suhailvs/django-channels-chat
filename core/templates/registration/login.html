@@ -1,0 +1,20 @@
+{% extends 'registration/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block form %}
+<form method="post" novalidate>
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ next }}">
+  {{ form.username|as_crispy_field }}
+  {{ form.password|as_crispy_field }}
+  <button type="submit" class="btn btn-primary btn-block">Log in</button>
+  <div class="login-or">
+     <hr class="hr-or">
+     <span class="span-or">or</span>
+  </div>
+  <p class="text-center">Don't have account? <a href="{% url 'signup' %}">Sign up here</a></p>
+
+</form>
+{% endblock form %}
+

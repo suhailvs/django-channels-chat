@@ -34,17 +34,7 @@ Please take a look at the link below for more information:
 https://channels.readthedocs.io/en/latest/introduction.html
 
 
-**update 04/06/19**
 
-- using pipenv for package management
-- move to Channels 2
-- use redis as the channel layer backing store. for more information, please check [channels_redis](https://github.com/django/channels_redis)
-
-### Database ###
-For this demo, I'm using a simple MySQL setup. If more performance is required, 
-a MySQL cluster / shard could be deployed.
-
-PD: I'm using indexes to improve performance.
 
 ## Assumptions ##
 Because of time constraints this project lacks of:
@@ -65,36 +55,33 @@ Because of time constraints this project lacks of:
 
 1. Create and activate a virtualenv (Python 3)
 ```bash
-pipenv --python 3 shell
+python3 -m venv env
 ```
 2. Install requirements
 ```bash
-pipenv install
+pip install -r requirements.txt
 ```
-3. Create a MySQL database
-```sql
-CREATE DATABASE chat CHARACTER SET utf8;
-```
-4. Start Redis Server
+
+3. Start Redis Server
 ```bash
 redis-server
 ```
 
-5. Init database
+4. Init database
 ```bash
 ./manage.py migrate
 ```
-6. Run tests
+5. Run tests
 ```bash
 ./manage.py test
 ```
 
-7. Create admin user
+6. Create admin user
 ```bash
 ./manage.py createsuperuser
 ```
 
-8. Run development server
+7. Run development server
 ```bash
 ./manage.py runserver
 ```
