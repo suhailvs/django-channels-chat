@@ -19,9 +19,13 @@
 	height: 100vh;
 }
 
-#navbar {
+.navbar {
 	/* background: #009688; */
-	background:#EDEDED
+	background:#EDEDED;
+}
+
+#message-area .navbar {
+	border-bottom: 1px solid #dbdbdb;
 }
 
 .dropdown-toggle::after {
@@ -62,7 +66,7 @@
 }
 
 #message-area {
-	border-left: 1px solid white;
+	border-left: 1px solid #dbdbdb;
 }
 
 #message-area .overlay {
@@ -119,7 +123,7 @@
 }
 
 #chat-list{
-    overflow-y: scroll;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
 

@@ -24,6 +24,7 @@ class MessageModelSerializer(ModelSerializer):
 
 
 class UserModelSerializer(ModelSerializer):
+    latest_message = CharField()
     class Meta:
         model = User
-        fields = ('username',)
+        fields = ('username', 'latest_message')

@@ -1,4 +1,4 @@
-from django.db.models import Q
+from django.db.models import Q, Count, OuterRef, Subquery
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from rest_framework.pagination import PageNumberPagination
@@ -44,7 +44,7 @@ class MessageModelViewSet(ModelViewSet):
             self.queryset = self.queryset.filter(
                 Q(recipient=request.user, user__username=target) |
                 Q(recipient__username=target, user=request.user))
-        return super(MessageModelViewSet, self).list(request, *args, **kwargs)
+        return super().list(request, *args, **kwargs)
 
     def retrieve(self, request, *args, **kwargs):
         msg = get_object_or_404(
@@ -62,6 +62,17 @@ class UserModelViewSet(ModelViewSet):
     pagination_class = None  # Get all user
 
     def list(self, request, *args, **kwargs):
+        user = request.user
         # Get all users except yourself
-        self.queryset = self.queryset.exclude(id=request.user.id)
-        return super(UserModelViewSet, self).list(request, *args, **kwargs)
+        self.queryset = self.queryset.exclude(id=user.id)
+        
+        # get latest message along with users
+        # https://stackoverflow.com/a/62801980/2351696        
+        self.queryset = self.queryset.annotate(
+            latest_message=Subquery(
+                MessageModel.objects.filter(Q(recipient=user)|Q(user=user)).filter(
+                    Q(recipient_id=OuterRef('pk'))|Q(user_id=OuterRef('pk'))
+                ).values('body').order_by('-timestamp')[:1]
+            )
+        )
+        return super().list(request, *args, **kwargs)

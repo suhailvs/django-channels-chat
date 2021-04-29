@@ -14,9 +14,9 @@
     <div class="col-12 col-sm-5 col-md-4 d-flex flex-column h-100" id="chat-list-area" style="position:relative;">
 
       <!-- Navbar -->
-      <div class="row d-flex flex-row align-items-center p-2" id="navbar">
+      <div class="row d-flex flex-row align-items-center p-2 navbar">
         <img src="https://via.placeholder.com/400x400" alt="Profile Photo" class="img-fluid rounded-circle mr-2" style="height:50px; cursor:pointer;" onclick="showProfileSettings()" id="display-pic">
-        <div class="text-body font-weight-bold" id="username"></div>
+        <div class="text-body font-weight-bold" id="username">{{user.username}}</div>
         <div class="nav-item dropdown ml-auto">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v text-body"></i></a>
           <div class="dropdown-menu dropdown-menu-right">
@@ -59,7 +59,7 @@
       <div class="w-100 h-100 overlay"><div class="intro"></div></div>
 
       <!-- Navbar -->
-      <div class="row d-flex flex-row align-items-center p-2 m-0 w-100" id="navbar">
+      <div class="row d-flex flex-row align-items-center p-2 m-0 w-100 navbar">
         <div class="d-block d-sm-none">
           <i class="fas fa-arrow-left p-2 mr-2 text-body" style="font-size: 1.5rem; cursor: pointer;" onclick="showChatList()"></i>
         </div>
