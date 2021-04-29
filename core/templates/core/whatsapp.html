@@ -26,8 +26,8 @@
         </div>
       </div>
 
-      <!-- Chat List -->
-      <div class="row" id="chat-list"></div>
+      <!-- User List -->
+      <div class="row" id="user-list"></div>
 
       <!-- Profile Settings -->
       <div class="d-flex flex-column w-100 h-100" id="profile-settings">
@@ -36,7 +36,7 @@
           <div class="text-white font-weight-bold">Profile</div>
         </div>
         <div class="d-flex flex-column" style="overflow:auto;">
-          <img alt="Profile Photo" class="img-fluid rounded-circle my-5 justify-self-center mx-auto" id="profile-pic">
+          <img src="https://via.placeholder.com/400x400" alt="Profile Photo" class="img-fluid rounded-circle my-5 justify-self-center mx-auto" id="profile-pic">
           <input type="file" id="profile-pic-input" class="d-none">
           <div class="bg-white px-3 py-2">
             <div class="text-muted mb-2"><label for="input-name">Your Name</label></div>
@@ -63,15 +63,15 @@
         <div class="d-block d-sm-none">
           <i class="fas fa-arrow-left p-2 mr-2 text-body" style="font-size: 1.5rem; cursor: pointer;" onclick="showChatList()"></i>
         </div>
-        <a href="#"><img src="https://via.placeholder.com/400x400" alt="Profile Photo" class="img-fluid rounded-circle mr-2" style="height:50px;" id="pic"></a>
+        <img src="https://via.placeholder.com/400x400" alt="Profile Photo" class="img-fluid rounded-circle mr-2" style="height:50px;" id="pic">
         <div class="d-flex flex-column">
           <div class="text-body font-weight-bold" id="name"></div>
           <div class="text-body small" id="details"></div>
         </div>
         <div class="d-flex flex-row align-items-center ml-auto">
-          <a href="#"><i class="fas fa-search mx-3 text-secondary d-none d-md-block"></i></a>
-          <a href="#"><i class="fas fa-paperclip mx-3 text-secondary d-none d-md-block"></i></a>
-          <a href="#"><i class="fas fa-ellipsis-v mr-2 mx-sm-3 text-secondary"></i></a>
+          <!-- <a href="#"><i class="fas fa-search mx-3 text-secondary d-none d-md-block"></i></a> -->
+          <a href="#" onclick="alert('Work in progress.');return false;"><i class="fas fa-paperclip mx-3 text-secondary d-none d-md-block"></i></a>
+          <a href="#" onclick="alert('Work in progress.');return false;"><i class="fas fa-ellipsis-v mr-2 mx-sm-3 text-secondary"></i></a>
         </div>
       </div>
 
@@ -80,7 +80,7 @@
 
       <!-- Input -->
       <div class="d-none justify-self-end align-items-center flex-row" id="input-area">
-        <a href="#"><i class="far fa-smile text-muted px-3" style="font-size:1.5rem;"></i></a>
+        <a href="#" onclick="alert('Work in progress.');return false;"><i class="far fa-smile text-muted px-3" style="font-size:1.5rem;"></i></a>
         <input type="text" name="message" id="input" placeholder="Type a message" class="flex-grow-1 border-0 px-3 py-2 my-3 rounded shadow-sm">
         <i class="fas fa-paper-plane text-muted px-3" style="cursor:pointer;" onclick="sendMessage()"></i>
       </div>

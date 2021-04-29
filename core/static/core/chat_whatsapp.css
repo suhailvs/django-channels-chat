@@ -122,7 +122,7 @@
 	overflow: auto;
 }
 
-#chat-list{
+#user-list{
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }

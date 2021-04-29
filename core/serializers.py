@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from core.models import MessageModel
-from rest_framework.serializers import ModelSerializer, CharField
+from rest_framework.serializers import ModelSerializer, CharField, DateTimeField
 
 
 class MessageModelSerializer(ModelSerializer):
@@ -25,6 +25,7 @@ class MessageModelSerializer(ModelSerializer):
 
 class UserModelSerializer(ModelSerializer):
     latest_message = CharField()
+    timestamp = DateTimeField()
     class Meta:
         model = User
-        fields = ('username', 'latest_message')
+        fields = ('username', 'latest_message','timestamp')

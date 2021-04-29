@@ -67,12 +67,12 @@ class UserModelViewSet(ModelViewSet):
         self.queryset = self.queryset.exclude(id=user.id)
         
         # get latest message along with users
-        # https://stackoverflow.com/a/62801980/2351696        
+        # https://stackoverflow.com/a/62801980/2351696 
+        newest = MessageModel.objects.filter(Q(recipient=user)|Q(user=user)).filter(
+            Q(recipient_id=OuterRef('pk'))|Q(user_id=OuterRef('pk'))
+        )       
         self.queryset = self.queryset.annotate(
-            latest_message=Subquery(
-                MessageModel.objects.filter(Q(recipient=user)|Q(user=user)).filter(
-                    Q(recipient_id=OuterRef('pk'))|Q(user_id=OuterRef('pk'))
-                ).values('body').order_by('-timestamp')[:1]
-            )
+            latest_message=Subquery(newest.values('body').order_by('-timestamp')[:1]),
+            timestamp=Subquery(newest.values('timestamp').order_by('-timestamp')[:1]),
         )
         return super().list(request, *args, **kwargs)
