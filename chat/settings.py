@@ -99,14 +99,8 @@ MESSAGES_TO_LOAD = 15
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login/'
 
-ASGI_APPLICATION = 'chat.routing.application'
+ASGI_APPLICATION = 'chat.asgi.application'
 
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "asgiref.inmemory.ChannelLayer",
-        "ROUTING": "core.routing.channel_routing",
-    },
-}
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
