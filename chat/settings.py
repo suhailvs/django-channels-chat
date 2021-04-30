@@ -122,12 +122,7 @@ REST_FRAMEWORK = {
 MESSAGES_TO_LOAD = 15
 
 # In settings.py
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "asgiref.inmemory.ChannelLayer",
-        "ROUTING": "core.routing.channel_routing",
-    },
-}
+
 # Could be changed to the config below to scale:
 # "BACKEND": "asgi_redis.RedisChannelLayer",
 # "CONFIG": {
@@ -166,6 +161,14 @@ ALLOWED_HOSTS = ['*']
 
 
 ASGI_APPLICATION = 'chat.routing.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "core.routing.channel_routing",
+    },
+}
+
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
@@ -173,4 +176,10 @@ CHANNEL_LAYERS = {
             "hosts": [('127.0.0.1', 6379)],
         },
     },
+}
+
+CHANNEL_LAYERS={
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+     }
 }
