@@ -164,7 +164,12 @@ let hideProfileSettings = () => {
 $(document).ready(function () {
     fetchUserList();
     // let socket = new WebSocket(`ws://127.0.0.1:8000/?session_key=${sessionKey}`);
-    var socket = new WebSocket('ws://' + window.location.host + `/ws?session_key=${sessionKey}`)
+    
+    let wsStart = 'ws://';
+    if (window.location.protocol == 'https:') {
+         wsStart = 'wss://'
+    }
+    var socket = new WebSocket(wsStart + window.location.host + `/ws?session_key=${sessionKey}`)
 
     chatInput.keypress(function (e) {
         if (e.keyCode == 13) sendMessage();
