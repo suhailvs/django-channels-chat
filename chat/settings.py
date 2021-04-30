@@ -79,8 +79,14 @@ STATIC_URL = '/static/'
 # Custom variables
 # ----------------
 STATIC_ROOT = BASE_DIR / 'run' / 'static_root'
-
 MEDIA_ROOT = BASE_DIR / 'run' /'media'
+
+
+import dj_database_url
+DATABASES = {'default': dj_database_url.config()}
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
