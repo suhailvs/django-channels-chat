@@ -1,8 +1,11 @@
-# Django Whatsapp
+# [Django Whatsapp](https://djangowhatsapp.herokuapp.com/)
+
+## [demo](https://djangowhatsapp.herokuapp.com/)
 
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fsuhailvs%2Fdjango-whatsapp&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
 
-![](http://g.recordit.co/JYruQDLd0h.gif)
+
+![demo](https://raw.github.com/suhailvs/django-whatsapp/main/demo.gif)
 
 A small functional person-to-person message center application built using Django.
 It has a REST API and uses WebSockets to notify clients of new messages and 
@@ -49,28 +52,35 @@ Because of time constraints this project lacks of:
 - Frontend Package (automatic lintin, building and minification)
 - Proper UX / UI design (looks plain bootstrap)
 
-## Run ##
+## Running the Project Locally
 
-1. Create and activate a virtualenv (Python 3)
+0. First, clone the repository to your local machine:
+```bash
+git clone https://github.com/suhailvs/django-whatsapp
+cd django-whatsapp
+```
+
+1. Ideally, create a [virtualenv](https://docs.python-guide.org/dev/virtualenvs/) and install the projects dependencies:
 ```bash
 python3 -m venv env
 source env/bin/activate
 ```
+
 2. Install requirements
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Install and Start Redis Server
+3. Init database and runserver
+```bash
+./manage.py migrate
+./manage.py runserver
+```
+
+4. Optional: Install and Start Redis Server
 ```bash
 sudo add-apt-repository ppa:redislabs/redis
 sudo apt-get update
 sudo apt-get install redis
 redis-server
-```
-
-4. Init database and runserver
-```bash
-./manage.py migrate
-./manage.py runserver
 ```
